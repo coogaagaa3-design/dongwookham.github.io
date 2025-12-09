@@ -1,0 +1,529 @@
+HTML
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dongwook Ham | Story of Growth, Code, and Art</title>
+    <style>
+        /* 기본 설정 */
+        :root {
+            --primary: #2c3e50;
+            --accent: #e67e22;
+            --secondary: #34495e;
+            --bg-light: #f9f9f9;
+            --text-color: #333;
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-light);
+        }
+
+        /* 네비게이션 */
+        nav {
+            background: var(--white);
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav .logo {
+            font-weight: bold;
+            font-size: 1.5rem;
+            color: var(--primary);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 20px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: var(--accent);
+        }
+
+        /* 히어로 섹션 */
+        .hero {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: var(--white);
+            height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            max-width: 800px;
+            font-weight: 300;
+        }
+
+        .tagline {
+            margin-top: 30px;
+            font-size: 1.2rem;
+            color: var(--accent);
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        /* 공통 섹션 스타일 */
+        section {
+            padding: 80px 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 40px;
+            text-align: center;
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: var(--accent);
+            margin: 10px auto 0;
+        }
+
+        /* Grid Layout for content */
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: flex-start;
+        }
+
+        .text-block p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+
+        .text-block strong {
+            color: var(--primary);
+        }
+
+        /* 카드 스타일 */
+        .card-container {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-bottom: 40px;
+        }
+
+        .card {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            flex: 1;
+            min-width: 280px;
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        
+        /* 비디오 스타일 */
+        .game-video {
+            width: 100%;
+            max-height: 350px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-top: 20px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        /* 슬라이드쇼 CSS */
+        .slideshow-container {
+            max-width: 400px; /* 500px에서 400px로 수정 */
+            margin: 50px auto;
+            position: relative;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            border-radius: 10px;
+            overflow: hidden;
+            background-color: #fff;
+        }
+
+        .mySlides {
+            display: none;
+            width: 100%;
+        }
+
+        .mySlides img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .image-caption {
+            position: absolute;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.6);
+            color: white;
+            width: 100%;
+            padding: 10px;
+            text-align: center;
+            font-size: 1rem;
+        }
+
+        /* Tech Stack Tags */
+        .tags {
+            margin-top: 15px;
+        }
+        
+        .tag {
+            display: inline-block;
+            background: #ecf0f1;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.9rem;
+            margin-right: 5px;
+            margin-bottom: 5px;
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        /* 하단 비전 섹션 */
+        .vision {
+            background-color: var(--white);
+            text-align: center;
+        }
+
+        .quote {
+            font-size: 1.5rem;
+            font-style: italic;
+            color: var(--primary);
+            margin: 30px 0;
+        }
+
+        /* 푸터 */
+        footer {
+            background: var(--primary);
+            color: var(--white);
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        /* 이미지/사진 추가 스타일 */
+        .story-image {
+            margin: 20px 0 40px;
+            text-align: center;
+        }
+        .story-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+        }
+        .story-image figcaption {
+            margin-top: 10px;
+            font-size: 0.95rem;
+            color: #777;
+        }
+        
+        /* ==================================== */
+        /* 성장 스토리 레이아웃 수정 CSS (이전 요청 반영) */
+        /* ==================================== */
+        #about .content-grid {
+            display: none; /* 이전 2열 그리드 숨김 (아래 flex 레이아웃으로 대체) */
+        }
+        .growth-story-container {
+            display: flex;
+            gap: 30px;
+            align-items: flex-start; /* 상단 정렬 */
+            margin-bottom: 40px;
+        }
+
+        .growth-story-text {
+            flex: 3; /* 텍스트가 더 많은 공간을 차지 */
+        }
+
+        .growth-story-image-wrap {
+            flex: 1; /* 이미지는 작은 공간을 차지 */
+            max-width: 250px; /* 이미지의 최대 너비를 제한 */
+            text-align: center;
+        }
+
+        .growth-story-image-wrap img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+        
+        .resilience-card-full {
+            /* Resilience Forged in Challenges 카드를 전체 너비로 만듭니다. */
+            background-color: #fdf2e9; 
+            border-left: 5px solid var(--accent);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .resilience-card-full h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        /* 모바일 대응 */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .content-grid { grid-template-columns: 1fr; }
+            nav ul { display: none; }
+            
+            .growth-story-container {
+                flex-direction: column;
+            }
+            .growth-story-image-wrap {
+                max-width: 100%; 
+                order: -1; 
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">Dongwook Ham.</div>
+        <ul>
+            <li><a href="#about">Growth</a></li>
+            <li><a href="#tech">Coding & Projects</a></li>
+            <li><a href="#life">Life & Art</a></li>
+            <li><a href="#vision">Vision</a></li>
+        </ul>
+    </nav>
+
+    <header class="hero">
+        <h1>Hello, I'm Dongwook Ham</h1>
+        <p>Turning challenges into strength, and ideas into kindness.</p>
+        <div class="tagline">RESILIENCE • CODING • COMPASSION</div>
+    </header>
+
+    <section id="about">
+        <h2>🌱 A Story of Growth</h2>
+        
+        <div class="growth-story-container">
+            <div class="growth-story-text text-block">
+                <p>I was born with a condition called **pectus excavatum**. Ever since I was young, my parents were deeply concerned about my health. To help me grow stronger, they encouraged me to try various sports—swimming, speed skating, ice hockey, golf, basketball, soccer, and table tennis. Although I never stood out in any particular field, I always enjoyed these experiences.</p>
+                <p>However, there was one event that completely changed the way I saw myself. My parents often sent me to camps in the U.S. and Australia for diverse experiences. One unforgettable moment happened at a YMCA swimming pool in the U.S. While my older brother passed a simple swim test and got a bracelet that allowed him to go down a huge, twisting water slide, I failed due to my short breath and weak lung capacity.</p>
+                <p>I was left behind in another section of the pool, and for the first time, I thought, **"Maybe I'm not capable."**</p>
+                <p>That day became a turning point. It wasn’t just disappointment—it was the moment I came to accept my body seriously, and eventually, we decided on surgery.</p>
+                <p>Through corrective surgery, a titanium bar was inserted into my chest for two years to raise my sunken sternum. During that time, my parents were constantly worried I might get hurt. But going through that period made my **body and mind stronger**. Now, I live a healthy life enjoying basketball, bowling, and table tennis.</p>
+            </div>
+            
+            <div class="growth-story-image-wrap story-image">
+                <figure>
+                    <img src="pectus_excavatum_surgery.jpg" alt="A photo representing Pectus Excavatum corrective surgery and recovery.">
+                    <figcaption>The titanium bar was inserted for two years to correct my sunken sternum.</figcaption>
+                </figure>
+            </div>
+        </div>
+        
+        <div class="resilience-card-full">
+            <h3>Resilience Forged in Challenges</h3>
+            <p>The failure at the swimming pool led to the ultimate decision to undergo surgery. The pain and endurance required during recovery taught me that **persistence leads to a stronger version of myself**, both physically and mentally.</p>
+        </div>
+        
+    </section>
+
+    <section id="tech" style="background-color: #fff;">
+        <h2>💻 Coding, Problem-Solving, and Possibility</h2>
+        <div class="card-container">
+            <div class="card">
+                <h3>The Logic of Code</h3>
+                <p>Since the third grade, I started learning Python and gradually explored various programming languages. At first, it was difficult, but as I began to understand the logic behind the code and saw the results of my work, I started to feel a strong sense of enjoyment and achievement.</p>
+                <p>I’ve learned HTML, JavaScript, Python, C, and C++, and what I discovered is that more important than the languages themselves is the way you think about and solve problems. **Debugging helped me develop persistence and logical thinking.**</p>
+            </div>
+            <div class="card">
+                <h3>Future Foundation</h3>
+                <p>Though I don’t yet have a strong portfolio, I believe the learning experiences I’ve accumulated will become the foundation for future growth. I’m especially interested in **game development** and have been practicing steadily. I've created simple websites, worked on coding projects, and I'm preparing to release a small game soon.</p>
+                <div class="tags">
+                    <span class="tag">Python</span>
+                    <span class="tag">C/C++</span>
+                    <span class="tag">HTML/JS</span>
+                    <span class="tag">Game Dev</span>
+                </div>
+                <video controls autoplay muted loop class="game-video">
+                    <source src="game_video.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </div>
+
+        <h2 style="margin-top: 80px;">🤝 A Project Born from Sharing</h2>
+        <div class="content-grid">
+            <div class="text-block" style="grid-column: 1 / span 2;">
+                <p>Since entering middle school, I have participated in various volunteer activities related to the environment, libraries, and a community-sharing fridge. One experience that left a lasting impression on me was the **sharing fridge project**. I cooked meals at home and delivered them to a welfare center, where they were stored and repackaged for people in need.</p>
+                <p>This experience made me feel the **true warmth of sharing**, and I began to think, "How can I expand this kind of volunteering to reach more people?" This led me to the idea of using data to better match those who need help with available resources.</p>
+                <p style="font-weight: bold; color: var(--accent);">My Vision:</p>
+                <p>As a result, I began to envision an **AI-based resource-matching system** for community-sharing fridges. I hope to become someone who can deliver kindness and warmth to the world through technology.</p>
+            </div>
+        </div>
+        
+        <div class="slideshow-container" id="volunteerSlideshow">
+            <div class="mySlides volunteer fade">
+                <img src="volunteer_1.jpg" alt="Dongwook delivering food to a welfare center.">
+                <div class="image-caption">Delivering home-cooked meals for the sharing fridge.</div>
+            </div>
+            <div class="mySlides volunteer fade">
+                <img src="volunteer_2.jpg" alt="Dongwook cooking or preparing food for charity.">
+                <div class="image-caption">Dongwook cooking or preparing food for charity.</div>
+            </div>
+            <div class="mySlides volunteer fade">
+                <img src="volunteer_3.jpg" alt="Dongwook cooking or preparing food for charity.">
+                <div class="image-caption">Preparing meals for those in need.</div>
+            </div>
+            <div class="mySlides volunteer fade">
+                <img src="volunteer_4.jpg" alt="Dongwook and community members working together.">
+                <div class="image-caption">Community outreach and teamwork.</div>
+            </div>
+            <div class="mySlides volunteer fade">
+                <img src="volunteer_5.jpg" alt="다양한 봉사활동 확인증">
+                <div class="image-caption">다양한 봉사활동 확인증</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="life">
+        <h2>🎨 Art and Connection</h2>
+        <div class="content-grid">
+            <div class="text-block">
+                <h3>Joy in Friendship and Learning</h3>
+                <p>I’ve had a close group of friends since elementary school. We still have pajama parties and talk about our worries and dreams. Some of my friends started aiming to study abroad, and that meant needing better grades.</p>
+                <p>When one of them was struggling with math, I gave him a math workbook as a birthday present, and we started studying together. Since I attend a different school with a different exam schedule, I prepared and printed practice materials for my friends to help them study. We studied together at a local café, and their hard work **inspired me as well**. The memories we made through studying are more than just academic—are cherished parts of my life.</p>
+            </div>
+            <div class="text-block">
+                <h3>Artistic Freedom</h3>
+                <p>My mother is an **artist**, and from a young age, my brother and I were surrounded by creative experiences. When we were little, we wore firefighter costumes and played games where we used water guns to **"put out fires" we had drawn on the bathroom walls**.</p>
+                <p>As we got older, my mother ordered large canvases that filled our living room, and over several months, we each completed a personal artwork. I became fascinated by drawing faces. She taught me that different artists can express the same face in entirely different ways. Through her guidance, I learned to appreciate **freedom in expression and the beauty of individual style**.</p>
+            </div>
+        </div>
+        
+        <div class="slideshow-container" id="artSlideshow">
+            <div class="mySlides art fade">
+                <img src="art_1.jpg" alt="Boy painting faces on a large yellow canvas.">
+                <div class="image-caption">Working on the large canvas: 'Faces of Diversity'.</div>
+            </div>
+            <div class="mySlides art fade">
+                <img src="art_2.jpg" alt="Boy sitting, adding detail to a large yellow canvas filled with abstract faces.">
+                <div class="image-caption">Focusing on abstract portraiture.</div>
+            </div>
+            <div class="mySlides art fade">
+                <img src="art_3.jpg" alt="Finished artwork representing individual style.">
+                <div class="image-caption">Completed canvas emphasizing expression and diversity.</div>
+            </div>
+            <div class="mySlides art fade">
+                <img src="art_4.jpg" alt="Boy drawing a colorful portrait on a digital screen.">
+                <div class="image-caption">Exploring digital art and modern expression.</div>
+            </div>
+            <div class="mySlides art fade">
+                <img src="art_5.jpg" alt="Dongwook and his brother with their completed canvases.">
+                <div class="image-caption">Personal artworks completed with my old brother.</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="vision" class="vision">
+        <h2>🏫 The School I Dream Of</h2>
+        <div class="quote">
+            "I hope to grow into someone who embraces my own color<br>and gives back what I’ve learned to others."
+        </div>
+        <p style="max-width: 600px; margin: 0 auto; color: #666;">
+            I want to attend a school where diverse thoughts are respected, where I can grow by learning and taking on new challenges with others. I believe this school will help me shape my story into something even greater.
+        </p>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Dongwook Ham. All rights reserved.</p>
+        <p style="font-size: 0.8rem; margin-top: 10px; opacity: 0.7;">Technology driven by Compassion.</p>
+    </footer>
+
+
+    <script>
+        // JavaScript for the Slideshows
+        
+        let volunteerSlideIndex = 0;
+        let artSlideIndex = 0;
+
+        function showSlides(containerId, index, className) {
+            let i;
+            let slides = document.querySelectorAll(`#${containerId} .${className}`);
+            
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";  
+            }
+            
+            index++;
+            if (index > slides.length) {
+                index = 1; // Loop back to the first slide
+            }
+            
+            slides[index - 1].style.display = "block";  
+            
+            // Update the correct index variable and set timeout for recurrence
+            // 슬라이드 전환 속도: 1500ms (1.5초)
+            const speed = 1500; 
+
+            if (containerId === 'volunteerSlideshow') {
+                volunteerSlideIndex = index;
+                setTimeout(() => showSlides('volunteerSlideshow', volunteerSlideIndex, 'volunteer'), speed); 
+            } else if (containerId === 'artSlideshow') {
+                artSlideIndex = index;
+                setTimeout(() => showSlides('artSlideshow', artSlideIndex, 'art'), speed); 
+            }
+        }
+        
+        // Initial call for both slideshows
+        showSlides('volunteerSlideshow', 0, 'volunteer');
+        showSlides('artSlideshow', 0, 'art');
+        
+    </script>
+</body>
+</html>
